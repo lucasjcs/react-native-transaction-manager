@@ -1,19 +1,25 @@
 module.exports = {
-  roots: ['<rootDir>/src'],
-  testMatch: [
-    '**/__tests__/**/*.test.[jt]s?(x)',
-  ],
-  collectCoverageFrom: [
-    '<rootDir>/src/**/*.{ts,tsx}',
-  ],
+  roots: ['<rootDir>'],
   coverageDirectory: '__tests__/coverage',
+  preset: 'react-native',
   testEnvironment: 'node',
-  transform: {
-    '.+\\.ts$': 'ts-jest',
-  },
-  moduleNameMapper: {
-    '@/(.*)': '<rootDir>/src/$1',
-  },
-  testPathIgnorePatterns: ['lib/', 'node_modules/'],
+  testMatch: [
+    '**/__tests__/**/*.[jt]s?(x)',
+    '**/?(*.)+(spec|test).[tj]s?(x)',
+  ],
+  moduleDirectories: [
+    'node_modules',
+  ],
 
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+  ],
+  transformIgnorePatterns: [
+    'node_modules/(?!(react-native)/)',
+  ],
+  moduleFileExtensions: [
+    'ts',
+    'tsx',
+    'js',
+  ],
 };

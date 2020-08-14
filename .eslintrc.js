@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
+    jest: true,
   },
   extends: ['plugin:react/recommended', 'airbnb'],
   parser: '@typescript-eslint/parser',
@@ -28,9 +29,14 @@ module.exports = {
     'no-use-before-define': 'off',
     'import/extensions': 'off',
     'react/react-in-jsx-scope': 'off',
+    'class-methods-use-this': 'off',
+    'no-useless-constructor': 'off',
+    'no-empty-function': ['error', { allow: ['constructors'] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
   settings: {
     'import/resolver': {
+      typescript: {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
