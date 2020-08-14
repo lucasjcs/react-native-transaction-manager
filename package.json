@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
@@ -39,24 +39,10 @@
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.0.4",
     "react-test-renderer": "16.13.1",
+    "ts-jest": "^26.2.0",
     "typescript": "^3.8.3"
   },
   "jest": {
-    "preset": "@testing-library/react-native",
-    "testMatch": [
-      "**/__tests__/**/*.test.[jt]s?(x)"
-    ],
-    "coverageDirectory": "__tests__/coverage",
-    "moduleNameMapper": {
-      "^~/(.*)": "<rootDir>/src/$1"
-    },
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "preset": "@testing-library/react-native"
   }
 }
