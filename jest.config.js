@@ -17,6 +17,9 @@ module.exports = {
   transformIgnorePatterns: [
     'node_modules/(?!(react-native)/)',
   ],
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1',
+  },
   moduleFileExtensions: [
     'ts',
     'tsx',
