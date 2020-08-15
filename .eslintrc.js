@@ -31,6 +31,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'class-methods-use-this': 'off',
     'no-useless-constructor': 'off',
+    'global-require': 'off',
     'no-empty-function': ['error', { allow: ['constructors'] }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
