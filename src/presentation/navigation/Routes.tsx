@@ -3,10 +3,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Login from '@/screens/Login';
-import Main from '@/screens/Main';
-import ComfirmTransaction from '@/screens/Transaction/ComfirmTransaction';
-import Transaction from '@/screens/Transaction';
+import Login from '@/presentation/screens/Login';
+import Main from '@/presentation/screens/Main';
+import ComfirmTransaction from '@/presentation/screens/Transaction/ComfirmTransaction';
+import Transaction from '@/presentation/screens/Transaction';
 
 
 const Stack = createStackNavigator();
@@ -15,7 +15,7 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="ConfirmTransaction"
+        initialRouteName="Login"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Login" component={Login} />

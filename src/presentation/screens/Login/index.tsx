@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { DefaultProps } from '@/presentation/models/DefaultProps';
+
 import {
   Container,
   FormContent,
@@ -9,16 +11,26 @@ import {
   ButtonSignInText,
 } from './styles';
 
-const Login: React.FC = () => (
+const Login: React.FC<DefaultProps> = props => (
   <Container>
     <FormContent>
       <InputUserName
         placeholder="Escolha um apelido"
       />
       <InputPassword
+        secureTextEntry
         placeholder="Defina uma senha"
       />
-      <SignInBotton>
+      <SignInBotton onPress={() => props.navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'Home',
+            params: { someParam: 'Param1' },
+          },
+        ],
+      })}
+      >
         <ButtonSignInText>
           ACESSAR
         </ButtonSignInText>

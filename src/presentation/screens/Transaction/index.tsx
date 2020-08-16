@@ -4,6 +4,8 @@ import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { colors } from '@/assets';
+import { DefaultProps } from '@/presentation/models/DefaultProps';
+import { TransactionType } from '@/presentation/models/TransactionType';
 import {
   Container,
   Header,
@@ -18,31 +20,45 @@ import {
 } from './styles';
 
 interface Props {
-  transactionType: string;
-  navigation: any
+  route: {
+    params: {
+      transactionType: typeof TransactionType.TRANSFER | typeof TransactionType.DEPOSIT
+    }
+  };
 }
 
-const Transaction: React.FC<Props> = () => {
+type LocalProps = DefaultProps & Props;
+
+
+const Transaction: React.FC<LocalProps> = ({ navigation, route }) => {
   const [money, setMoney] = useState('0,00');
+  const { transactionType } = route.params;
+
+  const convertMoney = (moneyValue: string) => {
+    setMoney(moneyValue.split('R$').join('').trim());
+  };
 
   return (
     <>
       <Container>
         <Header>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Icon name="arrow-back" size={25} color={colors.white}> </Icon>
           </TouchableOpacity>
         </Header>
 
         <ActionBar>
           <TransactionText>
-            Quanto você deseja transferir?
+            Quanto você deseja
+            {transactionType === TransactionType.DEPOSIT ? ' depositar ' : ' transferir '}
+
+            ?
           </TransactionText>
           <InputGroup>
             <TransactionTextInput
               type="money"
               value={money}
-              onChangeText={text => setMoney(text)}
+              onChangeText={text => convertMoney(text)}
             />
           </InputGroup>
 
@@ -51,7 +67,11 @@ const Transaction: React.FC<Props> = () => {
           </TextAlert>
         </ActionBar>
         <ButtomContent>
-          <PerformTransaction>
+          <PerformTransaction
+            onPress={() => navigation.navigate('ConfirmTransaction', {
+              value: money,
+            })}
+          >
             <TransactionTextButtom>
               Continuar
             </TransactionTextButtom>

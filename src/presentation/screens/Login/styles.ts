@@ -23,6 +23,7 @@ const GenericInput = styled.TextInput.attrs({
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 10px;
+  color: ${colors.white};
 `;
 
 export const InputUserName = styled(GenericInput)`

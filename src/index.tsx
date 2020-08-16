@@ -4,7 +4,7 @@ import React from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Routes from './navigation/Routes';
+import Routes from './presentation/navigation/Routes';
 
 
 Icon.loadFont();

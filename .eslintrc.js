@@ -34,6 +34,7 @@ module.exports = {
     'global-require': 'off',
     'no-empty-function': ['error', { allow: ['constructors'] }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'react/prop-types': 'off',
   },
   settings: {
     'import/resolver': {
