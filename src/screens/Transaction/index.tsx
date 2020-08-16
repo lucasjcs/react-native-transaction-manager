@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { colors } from '@/assets';
@@ -29,7 +29,7 @@ const Transaction: React.FC<Props> = () => {
     <>
       <Container>
         <Header>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity>
             <Icon name="arrow-back" size={25} color={colors.white}> </Icon>
           </TouchableOpacity>
         </Header>
@@ -52,7 +52,7 @@ const Transaction: React.FC<Props> = () => {
         </ActionBar>
         <ButtomContent>
           <PerformTransaction>
-            <TransactionTextButtom onPress={() => alert(money)}>
+            <TransactionTextButtom>
               Continuar
             </TransactionTextButtom>
           </PerformTransaction>

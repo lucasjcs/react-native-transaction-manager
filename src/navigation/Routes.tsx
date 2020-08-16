@@ -5,8 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from '@/screens/Login';
 import Main from '@/screens/Main';
-import Transaction from '@/screens/Transaction';
 import ComfirmTransaction from '@/screens/Transaction/ComfirmTransaction';
+import Transaction from '@/screens/Transaction';
 
 
 const Stack = createStackNavigator();
