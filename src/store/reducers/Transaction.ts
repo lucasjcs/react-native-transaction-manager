@@ -8,6 +8,7 @@ const { Types, Creators } = createActions({
   incrementBalance: ['param'],
   decrementBalance: ['param'],
   setTransactions: ['param'],
+  setBalance: ['param'],
 });
 
 export const TransactionTypes = Types;
@@ -35,7 +36,6 @@ export const incrementBalance = (state, action) => {
 export const decrementBalance = (state, action) => {
   const actionBalance = action.param.value.replace('.', '').replace(',', '.');
   const decrementedBalance = parseFloat(state.balance) - parseFloat(actionBalance);
-
   return state.merge({
     value: actionBalance,
     balance: decrementedBalance,
@@ -49,8 +49,14 @@ export const setTransactions = (state, action) => {
   return state.merge({ transactions });
 };
 
+export const setBalance = (state, action) => {
+  const { balance } = action.param;
+  return state.merge({ balance });
+};
+
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.INCREMENT_BALANCE]: incrementBalance,
   [Types.DECREMENT_BALANCE]: decrementBalance,
   [Types.SET_TRANSACTIONS]: setTransactions,
+  [Types.SET_BALANCE]: setBalance,
 });

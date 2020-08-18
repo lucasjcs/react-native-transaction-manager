@@ -15,8 +15,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import { colors } from '@/assets';
 
 import Immutable from 'seamless-immutable';
-import { StorageKeys } from '@/hooks/models/StorageKeys';
-import AsyncStorage from '@react-native-community/async-storage';
+
 import {
   Container,
   TransactionsTitle,
@@ -37,8 +36,10 @@ const Main: React.FC<DefaultProps> = ({ navigation }) => {
 
   const { clearTransactions, sendStorageToRedux } = useStorage();
 
+
   async function clearHistory() {
     await clearTransactions();
+    sendStorageToRedux();
   }
 
   useEffect(() => {

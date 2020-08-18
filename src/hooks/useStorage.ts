@@ -1,36 +1,40 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { TransactionItem } from '@/hooks/models/TransactionItem';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import TransactionActions from '@/store/reducers/Transaction';
-import { TransactionState } from '@/store/models/TransactionState';
 import { StorageKeys } from './models/StorageKeys';
 
 
 const useStorage = () => {
   const dispatch = useDispatch();
-  const balance = useSelector((state: TransactionState) => state.transaction.balance);
 
   async function saveTransaction(params: TransactionItem) {
     const storagedTransactions = await getTransactions();
     storagedTransactions.push(params);
-
     dispatch(
       TransactionActions.setTransactions({
         transactions: storagedTransactions,
       }),
     );
-    await AsyncStorage.setItem(StorageKeys.BALANCE, String(balance));
     await AsyncStorage.setItem(StorageKeys.TRANSACTIONS, JSON.stringify(storagedTransactions));
   }
 
   async function sendStorageToRedux() {
     const storagedTransactions = await getTransactions();
+    const storagedBalance = parseFloat(await AsyncStorage.getItem(StorageKeys.BALANCE));
 
     if (storagedTransactions) {
       dispatch(
         TransactionActions.setTransactions({
           transactions: storagedTransactions,
+        }),
+      );
+    }
+    if (storagedBalance && storagedBalance > 0) {
+      dispatch(
+        TransactionActions.setBalance({
+          balance: storagedBalance,
         }),
       );
     }
@@ -51,11 +55,15 @@ const useStorage = () => {
     await AsyncStorage.removeItem(StorageKeys.TRANSACTIONS);
   }
 
+  async function saveBalance(balance: number) {
+    await AsyncStorage.setItem(StorageKeys.BALANCE, String(balance));
+  }
 
   return {
     sendStorageToRedux,
     saveTransaction,
     clearTransactions,
+    saveBalance,
   };
 };
 

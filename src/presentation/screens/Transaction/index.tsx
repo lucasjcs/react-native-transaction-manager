@@ -45,7 +45,7 @@ const Transaction: React.FC<LocalProps> = ({ navigation, route }) => {
   };
 
   const validateTransactionValue = () => {
-    const transformedMoney = parseFloat(money.split('R$').join('').trim());
+    const transformedMoney = parseFloat(money.replace('.', '').replace(',', '.').trim());
     if (
       transactionType === TransactionType.TRANSFER
       && (transformedMoney > balance || transformedMoney < 1)

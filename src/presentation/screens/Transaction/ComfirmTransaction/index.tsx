@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import DefaultHeader from '@/presentation/components/DefaultHeader';
 import { DefaultProps } from '@/presentation/models/DefaultProps';
 import TransactionActions from '@/store/reducers/Transaction';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Alert, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard,
 } from 'react-native';
@@ -12,6 +12,7 @@ import useStorage from '@/hooks/useStorage';
 
 import moment from 'moment';
 
+import { TransactionState } from '@/store/models/TransactionState';
 import {
   Container,
   TitleText,
@@ -41,8 +42,12 @@ const ComfirmTransaction: React.FC<LocalProps> = ({ navigation, route }) => {
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState('');
+  const balance = useSelector((state: TransactionState) => state.transaction.balance);
 
-  const { saveTransaction } = useStorage();
+
+  const { saveTransaction, saveBalance } = useStorage();
+
+  if (balance !== undefined) { saveBalance(balance); }
 
   const dispatchAction = transactionType === TransactionType.TRANSFER
     ? TransactionActions.decrementBalance
