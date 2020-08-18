@@ -15,7 +15,7 @@ Olá! Este projeto consiste em um simulador de transações simples, onde é pos
 -	[styled-components](https://styled-components.com/) `5.1.1` para criação de componentes estilizados.
 ## Metodologia de Desenvolvimento
 
-A arquitetura do projeto foi baseada na Clean Architecture, porém de forma simplificada, a fim de trazer maior legibilidade e simplicidade a um projeto pequeno. A idéia é extrair a maior parte da regra de negócio para classes de implementação de casos de uso (nesse caso, hooks e o próprio redux), deixam a camada de apresentação de dados muito mais limpa.
+A arquitetura do projeto foi baseada na Clean Architecture, porém de forma simplificada, a fim de trazer maior legibilidade e simplicidade a um projeto pequeno. A idéia é extrair a maior parte da regra de negócio para classes de implementação de casos de uso (nesse caso, hooks e o próprio redux), deixando a camada de apresentação de dados muito mais limpa.
 
 ## Como executar
 
