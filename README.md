@@ -3,6 +3,8 @@
 
 Olá! Este projeto consiste em um simulador de transações simples, onde é possível realizar operações de entrada e saída de dinheiro. Também é possível visualizar o histórico das transações.
 
+![](transaction-manager.gif)
+
 
 ## Principais tecnologias utilizadas
  -  [React Native]([https://github.com/facebook/react-native](https://github.com/facebook/react-native))  `0.63.2` 
