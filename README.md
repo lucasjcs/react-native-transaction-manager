@@ -8,7 +8,7 @@ Olá! Este projeto consiste em um simulador de transações simples, onde é pos
 
 ## Principais tecnologias utilizadas
  -  [React Native](https://github.com/facebook/react-native)  `0.63.2` 
-  -	[TypeScript](https://yarnpkg.com/pt-BR/) `3.8.3` para adicionar tipos ao javascript.
+  -	[TypeScript](https://www.typescriptlang.org/) `3.8.3` para adicionar tipos ao javascript.
  - [Redux](https://webpack.js.org/)  `4.0.5` para gerenciamento do estado da aplicação.
  - [Reduxsauce](https://github.com/jkeam/reduxsauce) `1.2.0"` para simplificar a lógica de actions, types e creators.
  - [seamless-immutable](https://github.com/rtfeldman/seamless-immutable) `7.1.4` para garantir um estado imutável.
