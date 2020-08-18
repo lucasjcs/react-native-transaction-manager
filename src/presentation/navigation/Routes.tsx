@@ -3,7 +3,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Login from '@/presentation/screens/Login';
 import Main from '@/presentation/screens/Main';
 import ComfirmTransaction from '@/presentation/screens/Transaction/ComfirmTransaction';
 import Transaction from '@/presentation/screens/Transaction';
@@ -15,10 +14,9 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="Home"
         screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Main} />
         <Stack.Screen name="Transaction" component={Transaction} />
         <Stack.Screen name="ConfirmTransaction" component={ComfirmTransaction} />

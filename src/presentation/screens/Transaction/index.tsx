@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-
-import { TouchableOpacity } from 'react-native';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+import { TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { colors } from '@/assets';
 import { DefaultProps } from '@/presentation/models/DefaultProps';
 import { TransactionType } from '@/presentation/models/TransactionType';
+import { useSelector } from 'react-redux';
+import { TransactionState } from '@/store/models/TransactionState';
 import {
   Container,
   Header,
@@ -34,9 +37,29 @@ const Transaction: React.FC<LocalProps> = ({ navigation, route }) => {
   const [money, setMoney] = useState('0,00');
   const { transactionType } = route.params;
 
+  const balance = useSelector((state: TransactionState) => state.transaction.balance);
+  const formatedBalance = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'BRL' }).format(balance);
+
   const convertMoney = (moneyValue: string) => {
     setMoney(moneyValue.split('R$').join('').trim());
   };
+
+  const validateTransactionValue = () => {
+    const transformedMoney = parseFloat(money.split('R$').join('').trim());
+    if (
+      transactionType === TransactionType.TRANSFER
+      && (transformedMoney > balance || transformedMoney < 1)
+    ) {
+      Alert.alert('Valor inválido.');
+    } else {
+      navigation.navigate('ConfirmTransaction', {
+        value: money,
+        balance,
+        transactionType,
+      });
+    }
+  };
+
 
   return (
     <>
@@ -59,18 +82,20 @@ const Transaction: React.FC<LocalProps> = ({ navigation, route }) => {
               type="money"
               value={money}
               onChangeText={text => convertMoney(text)}
+              onSubmitEditing={validateTransactionValue}
             />
           </InputGroup>
-
-          <TextAlert>
-            Saldo disponível R$ 1.547,00
-          </TextAlert>
+          {transactionType === TransactionType.TRANSFER && (
+            <TextAlert>
+              Saldo disponível
+              {' '}
+              {formatedBalance}
+            </TextAlert>
+          )}
         </ActionBar>
         <ButtomContent>
           <PerformTransaction
-            onPress={() => navigation.navigate('ConfirmTransaction', {
-              value: money,
-            })}
+            onPress={validateTransactionValue}
           >
             <TransactionTextButtom>
               Continuar

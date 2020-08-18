@@ -1,7 +1,11 @@
 import React from 'react';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 import { DefaultProps } from '@/presentation/models/DefaultProps';
 import { TransactionType } from '@/presentation/models/TransactionType';
+
+
 import {
   Container,
   BalanceValue,
@@ -13,39 +17,50 @@ import {
   ActionText,
 } from './styles';
 
-const Header: React.FC<DefaultProps> = ({ navigation }) => (
-  <>
-    <Container>
-      <BalanceContent>
-        <BalanceTitle>
-          Saldo disponível
-        </BalanceTitle>
-        <BalanceValue>
-          R$ 13.550,07
-        </BalanceValue>
-      </BalanceContent>
+type Props = {
+  balance: number;
+}
 
-      <ActionContent>
-        <ActionTransaction onPress={() => navigation.navigate('Transaction', {
-          transactionType: TransactionType.DEPOSIT,
-        })}
-        >
-          <IconImage
-            source={require('@/assets/images/deposit.png')}
-          />
-          <ActionText>Depositar</ActionText>
-        </ActionTransaction>
-        <ActionTransaction onPress={() => navigation.navigate('Transaction', {
-          transactionType: TransactionType.TRANSFER,
-        })}
-        >
-          <IconImage
-            source={require('@/assets/images/payment.png')}
-          />
-          <ActionText>Transferir</ActionText>
-        </ActionTransaction>
-      </ActionContent>
-    </Container>
-  </>
-);
+type LocalProps = Props & DefaultProps
+
+const Header: React.FC<LocalProps> = ({ navigation, balance }) => {
+  const formatedBalance = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'BRL' }).format(balance);
+
+  return (
+    <>
+      <Container>
+        <BalanceContent>
+          <BalanceTitle>
+            Saldo disponível
+          </BalanceTitle>
+          <BalanceValue>
+            {' '}
+            {formatedBalance}
+          </BalanceValue>
+        </BalanceContent>
+
+        <ActionContent>
+          <ActionTransaction onPress={() => navigation.navigate('Transaction', {
+            transactionType: TransactionType.DEPOSIT,
+          })}
+          >
+            <IconImage
+              source={require('@/assets/images/deposit.png')}
+            />
+            <ActionText>Depositar</ActionText>
+          </ActionTransaction>
+          <ActionTransaction onPress={() => navigation.navigate('Transaction', {
+            transactionType: TransactionType.TRANSFER,
+          })}
+          >
+            <IconImage
+              source={require('@/assets/images/payment.png')}
+            />
+            <ActionText>Transferir</ActionText>
+          </ActionTransaction>
+        </ActionContent>
+      </Container>
+    </>
+  );
+};
 export default Header;

@@ -4,16 +4,18 @@ import { colors } from '@/assets';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 export const Container = styled.View`
-  height: 200px;
+  height: 250px;
   padding-top: 10px;
-  margin-top: ${getStatusBarHeight() + 5}px;
   background: ${colors.primary};
+  margin-bottom: 20px;
 `;
 
 export const BalanceContent = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  margin-top: ${getStatusBarHeight() + 5}px;
+
 `;
 
 export const BalanceTitle = styled.Text`

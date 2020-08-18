@@ -3,18 +3,11 @@ import { colors } from '@/assets';
 
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
-import {
-  Container as TransactionContainer,
-  ButtomContent as ButtomTransaction,
-} from '../styles';
 
-export const Wrap = styled.View`
-  align-items: center;
+export const Container = styled.View`
   flex: 1;
-`;
-
-export const Container = styled(TransactionContainer)`
-
+  background: ${colors.black};
+  justify-content: center;
 `;
 
 export const Header = styled.View`
@@ -45,16 +38,19 @@ export const ActionFormContent = styled.View`
   border-radius: 6px;
 `;
 
-export const PasswordTextInput = styled.TextInput.attrs({
+export const DescriptionTextInput = styled.TextInput.attrs({
   placeholderTextColor: colors.white,
 })`
-  max-width: 60%;
   padding: 15px;
   color: ${colors.lighter};
 `;
 
-export const ButtomContent = styled(ButtomTransaction)`
+export const ButtomContent = styled.View`
   width: 100%;
+  justify-content: flex-end;
+  flex: 1;
+  margin-top: 80px;
+
 `;
 
 export const ConfirmTransactionButtom = styled.TouchableOpacity`
@@ -62,6 +58,7 @@ export const ConfirmTransactionButtom = styled.TouchableOpacity`
   border-top-color: ${colors.primary};
   padding: 20px;
   align-items: center;
+
 `;
 export const ConfirmText = styled.Text`
   color: ${colors.lighter};
