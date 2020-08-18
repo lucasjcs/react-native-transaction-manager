@@ -10,10 +10,9 @@ Olá! Este projeto consiste em um simulador de transações simples, onde é pos
  -  [React Native]([https://github.com/facebook/react-native](https://github.com/facebook/react-native))  `0.63.2` 
   -	[TypeScript](https://yarnpkg.com/pt-BR/) `3.8.3` para adicionar tipos ao javascript.
  - [Redux](https://webpack.js.org/)  `4.0.5` para gerenciamento do estado da aplicação.
- - [Reduxsauce]([https://github.com/jkeam/reduxsauce](https://github.com/jkeam/reduxsauce)) `1.2.0"` para simplificar a lógica de actions, types e creators.
- - [seamless-immutable]([https://github.com/rtfeldman/seamless-immutable](https://github.com/rtfeldman/seamless-immutable)) `7.1.4` para garantir um estado imutável.
--	[styled-components]([https://styled-components.com/](https://styled-components.com/)) `5.1.1` para criação de componentes estilizados.
-
+ - [Reduxsauce]([https://github.com/jkeam/reduxsauce]) `1.2.0"` para simplificar a lógica de actions, types e creators.
+ - [seamless-immutable]([https://github.com/rtfeldman/seamless-immutable]) `7.1.4` para garantir um estado imutável.
+-	[styled-components]([https://styled-components.com/]) `5.1.1` para criação de componentes estilizados.
 ## Metodologia de Desenvolvimento
 
 A arquitetura do projeto foi baseada na Clean Architecture, porém de forma simplificada, a fim de trazer maior legibilidade e simplicidade a um projeto pequeno. A idéia é extrair a maior parte da regra de negócio para classes de implementação de casos de uso (nesse caso, hooks e o próprio redux), deixam a camada de apresentação de dados muito mais limpa.
