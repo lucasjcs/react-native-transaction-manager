@@ -31,14 +31,14 @@ $ npm install ou yarn
 Se optar por executar no emulador do iPhone execute também:
 `$ cd ios && pod install && cd ..`
 ##### 3 - Execute o projeto:
-Com o ambiente de  [ambiente de desenvolvimento](https://github.com/lucasjcs/react-native-run-tutorial)  configurado (emuladores, SDKs) execute:
+Com o [ambiente de desenvolvimento](https://github.com/lucasjcs/react-native-run-tutorial)  configurado (emuladores, SDKs) execute:
 ```
 $ yarn ios ou yarn android
 ```
 
 
 ## Estrutura do Git
-O padrão de commit adotado foi o [Conventional Commits](https://styled-components.com/).
+O padrão de commit adotado foi o [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 Para garantir o cumprimento da padronização foi utilizado a biblioteca `git-commit-msg-linter`.
 
 
