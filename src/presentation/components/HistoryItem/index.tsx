@@ -15,7 +15,7 @@ type Props = {
 }
 
 const HistoryItem: React.FC<Props> = ({ item }) => (
-  <Container>
+  <Container testID="history-item">
     <CardItem>
       <TypeContent>
         <DateText>
@@ -28,9 +28,7 @@ const HistoryItem: React.FC<Props> = ({ item }) => (
 
       <TypeContent>
         <ValueText>
-          R$
-          {' '}
-          {item.value}
+          {`R$ ${item.value}`}
         </ValueText>
       </TypeContent>
 

@@ -33,25 +33,28 @@ const Header: React.FC<LocalProps> = ({ navigation, balance }) => {
           <BalanceTitle>
             Saldo disponível
           </BalanceTitle>
-          <BalanceValue>
-            {' '}
+          <BalanceValue testID="balance-value">
             {formatedBalance}
           </BalanceValue>
         </BalanceContent>
 
         <ActionContent>
-          <ActionTransaction onPress={() => navigation.navigate('Transaction', {
-            transactionType: TransactionType.DEPOSIT,
-          })}
+          <ActionTransaction
+            testID="deposit-buttom"
+            onPress={() => navigation.navigate('Transaction', {
+              transactionType: TransactionType.DEPOSIT,
+            })}
           >
             <IconImage
               source={require('@/assets/images/deposit.png')}
             />
             <ActionText>Depositar</ActionText>
           </ActionTransaction>
-          <ActionTransaction onPress={() => navigation.navigate('Transaction', {
-            transactionType: TransactionType.TRANSFER,
-          })}
+          <ActionTransaction
+            testID="transfer-buttom"
+            onPress={() => navigation.navigate('Transaction', {
+              transactionType: TransactionType.TRANSFER,
+            })}
           >
             <IconImage
               source={require('@/assets/images/payment.png')}

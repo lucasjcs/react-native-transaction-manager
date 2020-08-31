@@ -59,7 +59,7 @@ const Main: React.FC<DefaultProps> = ({ navigation }) => {
       </TitleArea>
       <ScrollView>
         {!transactions.length && (
-          <EmptyList>
+          <EmptyList testID="empty-list">
             <EmptyListIcon source={require('@/assets/images/clean.png')} />
             <EmptyText>Você não possui histórico de transações</EmptyText>
           </EmptyList>
@@ -67,6 +67,7 @@ const Main: React.FC<DefaultProps> = ({ navigation }) => {
 
         <ListContent>
           <FlatList
+            testID="history-list"
             data={sortableTransactions.reverse()}
             keyExtractor={() => String(Math.random())}
             renderItem={item => HistoryItem(item)}

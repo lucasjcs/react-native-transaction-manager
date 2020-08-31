@@ -1,28 +1,27 @@
-module.exports = {
-  roots: ['<rootDir>'],
-  coverageDirectory: '__tests__/coverage',
-  preset: 'react-native',
-  testEnvironment: 'node',
-  testMatch: [
-    '**/__tests__/**/*.[jt]s?(x)',
-    '**/?(*.)+(spec|test).[tj]s?(x)',
-  ],
-  moduleDirectories: [
-    'node_modules',
-  ],
+const path = require('path');
 
-  testPathIgnorePatterns: [
-    '<rootDir>/node_modules/',
+module.exports = {
+  preset: 'react-native',
+  setupFilesAfterEnv: [
+    '@testing-library/jest-native/extend-expect',
   ],
-  transformIgnorePatterns: [
-    'node_modules/(?!(react-native)/)',
-  ],
+  transform: {
+    '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
+    '\\.(ts|tsx)$': 'ts-jest',
+  },
+  coverageDirectory: '__tests__/coverage',
+  globals: {
+    'ts-jest': {
+      tsConfig: 'tsconfig.jest.json',
+    },
+  },
+  clearMocks: true,
+  moduleDirectories: ['node_modules', path.join(__dirname, 'src')],
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/src/$1',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/assetsTransformer.js',
+    '\\.(css|less)$': '<rootDir>/assetsTransformer.js',
   },
-  moduleFileExtensions: [
-    'ts',
-    'tsx',
-    'js',
-  ],
+  moduleFileExtensions: ['ts', 'tsx', 'js'],
+  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
 };
