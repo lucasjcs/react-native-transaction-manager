@@ -36,6 +36,10 @@ Com o [ambiente de desenvolvimento](https://github.com/lucasjcs/react-native-run
 $ yarn ios ou yarn android
 ```
 
+Para executar os testes:
+```
+$ yarn test
+```
 
 ## Estrutura do Git
 O padrão de commit adotado foi o [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
