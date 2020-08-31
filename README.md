@@ -38,7 +38,7 @@ $ yarn ios ou yarn android
 
 Para executar os testes:
 ```
-$ yarn test
+$ yarn test ou npm run test
 ```
 
 ## Estrutura do Git
