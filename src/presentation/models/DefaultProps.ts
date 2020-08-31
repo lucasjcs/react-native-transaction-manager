@@ -1,6 +1,6 @@
 export type DefaultProps = {
   navigation: {
-    navigate: any;
-    goBack: any;
+    navigate?: any;
+    goBack?: any;
   }
 }

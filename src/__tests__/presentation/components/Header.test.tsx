@@ -8,6 +8,11 @@ import Header from '@/presentation/components/Header';
 import { DefaultProps } from '@/presentation/models/DefaultProps';
 import { TransactionType } from '@/presentation/models/TransactionType';
 
+const { navigation }: DefaultProps = {
+  navigation: {
+    navigate: jest.fn(),
+  },
+};
 
 describe('Header', () => {
   it('should show a formated balance', () => {
@@ -16,12 +21,6 @@ describe('Header', () => {
   });
 
   it('should call deposit screen', () => {
-    const { navigation }: DefaultProps = {
-      navigation: {
-        navigate: jest.fn(),
-      },
-    };
-
     const { getByTestId } = render(<Header navigation={navigation} balance={200} />);
 
     fireEvent.press(getByTestId('deposit-buttom'));
@@ -32,12 +31,6 @@ describe('Header', () => {
   });
 
   it('should call transfer screen', () => {
-    const { navigation }: DefaultProps = {
-      navigation: {
-        navigate: jest.fn(),
-      },
-    };
-
     const { getByTestId } = render(<Header navigation={navigation} balance={200} />);
 
     fireEvent.press(getByTestId('transfer-buttom'));
