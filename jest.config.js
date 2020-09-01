@@ -9,7 +9,7 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
     '\\.(ts|tsx)$': 'ts-jest',
   },
-  coverageDirectory: '__tests__/coverage',
+  coverageDirectory: '<rootDir>/src/__tests__/coverage',
   globals: {
     'ts-jest': {
       tsConfig: 'tsconfig.jest.json',
