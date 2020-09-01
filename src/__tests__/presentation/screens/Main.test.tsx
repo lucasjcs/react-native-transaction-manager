@@ -27,8 +27,6 @@ describe('MainScreen', () => {
   });
 
   it('should return a history list from redux', () => {
-    // @ts-ignore
-
     const transactionItem: TransactionItem[] = [
       {
         value: 200,

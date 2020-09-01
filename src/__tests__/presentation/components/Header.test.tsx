@@ -1,5 +1,3 @@
-import '@testing-library/jest-native/extend-expect';
-
 import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react-native';
