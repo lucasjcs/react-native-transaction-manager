@@ -7,6 +7,9 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest --passWithNoTests",
+    "test:clearCache": "jest --clearCache",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watchAll",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
