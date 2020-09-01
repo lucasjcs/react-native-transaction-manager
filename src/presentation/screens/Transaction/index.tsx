@@ -40,6 +40,7 @@ const Transaction: React.FC<LocalProps> = ({ navigation, route }) => {
   const balance = useSelector((state: TransactionState) => state.transaction.balance);
   const formatedBalance = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'BRL' }).format(balance);
 
+
   const convertMoney = (moneyValue: string) => {
     setMoney(moneyValue.split('R$').join('').trim());
   };
@@ -79,6 +80,7 @@ const Transaction: React.FC<LocalProps> = ({ navigation, route }) => {
           </TransactionText>
           <InputGroup>
             <TransactionTextInput
+              testID="money-input"
               type="money"
               value={money}
               onChangeText={text => convertMoney(text)}
@@ -87,9 +89,7 @@ const Transaction: React.FC<LocalProps> = ({ navigation, route }) => {
           </InputGroup>
           {transactionType === TransactionType.TRANSFER && (
             <TextAlert>
-              Saldo disponível
-              {' '}
-              {formatedBalance}
+              {`Saldo disponível ${formatedBalance}`}
             </TextAlert>
           )}
         </ActionBar>

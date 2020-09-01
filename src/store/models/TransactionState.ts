@@ -5,9 +5,9 @@ export interface TransactionState {
 }
 
 export interface Data {
-  value: number;
+  value?: number;
   balance: number;
-  description: string;
+  description?: string;
   transactions?: [];
   type?: TransactionType.DEPOSIT | TransactionType.TRANSFER;
 }
