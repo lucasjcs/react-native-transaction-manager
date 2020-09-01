@@ -39,6 +39,7 @@ $ yarn ios ou yarn android
 Para executar os testes:
 ```
 $ yarn test ou npm run test
+$ yarn test:coverage ou npm run test:coverage
 ```
 
 ## Estrutura do Git
